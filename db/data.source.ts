@@ -1,4 +1,5 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { UpdateSummaryListener } from '../src/tasks/update-summary.listener';
 export const dbdatasource: DataSourceOptions = {
     type: 'mssql',
     host: 'localhost',
@@ -11,6 +12,7 @@ export const dbdatasource: DataSourceOptions = {
     // entities: [__dirname + '/**/*.entity{.ts.js}'],
     entities: ['dist/**/*.entity.js'],
     migrations: ['dist/db/migrations/*.js'],
+    subscribers: [UpdateSummaryListener],
     options: { encrypt: false },
     // migrations: ['dist/tasks/migrations/*.js'],
     // migrationsTableName: "task_migrations",
